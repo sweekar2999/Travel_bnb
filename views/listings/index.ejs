@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerPlate") -%>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">All Listings</h1>
+        <div class="row">
+            <% for(let item of data){ %>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-4"> <!-- Updated to show 3 cards per row on XL -->
+                    <a  class="listing-anchor" href="/listings/<%= item.id %>">
+                        <div class="card">
+                            <div class="card-img-container">
+                                <img src="<%= item.image%>" alt="<%= item.title %>" class="card-img">
+                                <div class="card-img-overlay"></div> <!-- Overlay added here -->
+                            </div>
+                            <div class="card-content">
+                                <h2><%= item.title %></h2>
+                                <p><%= item.description %></p>
+                                <p class="price">&#x20B9;<%= item.price.toLocaleString('en-IN') %></p>
+                                <p class="location"><%= item.location %>, <%= item.country %></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>

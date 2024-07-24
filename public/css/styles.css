@@ -1,0 +1,259 @@
+.navbar{
+    height:5rem;
+    background-color:white;
+}
+.fa-compass{
+    color:#fe424d;
+    font-size:2rem;
+    
+}
+.nav-link{
+    color: #222222 !important;
+}
+//footer
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    padding: 20px 0;
+    background-color: #ebebeb;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.f-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.f-info-socials {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.f-info-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.f-info a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.f-info a:hover {
+    text-decoration: underline;
+}
+
+.f-info i {
+    font-size: 24px;
+    color: #007bff;
+}
+
+//index.ejs
+/* Import Jakarta Sans fonts */
+@import url('https://fonts.googleapis.com/css2?family=Jakarta+Sans:wght@400;500;600&display=swap');
+html, body {
+    overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+}
+body {
+    background-color: #f7f7f7;
+    font-family: 'Jakarta Sans', sans-serif;
+
+}
+
+.card {
+    background-color: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative; /* Ensure overlay is positioned correctly */
+    height: 400px; /* Increased height for the card */
+}
+
+.card-img-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.card:hover .card-img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h2 {
+    font-size: 22px;
+    margin: 0;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 600; /* Semibold */
+}
+
+.card-content p {
+    margin: 5px 0;
+    color: #777; /* Description color */
+    font-size: 16px;
+    font-weight: 400; /* Regular */
+}
+
+.price {
+    color: #ff5a5f; /* Red text color for price */
+    font-size: 18px;
+    font-weight: 700; /* Bold */
+}
+
+.location-country {
+    color: #444; /* Darker color for location and country text */
+}
+
+/* Remove underline from links */
+.listing-anchor {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Responsive Design */
+@media (max-width: 575.98px) { /* Extra small devices (phones, 576px and down) */
+    .card {
+        width: 100%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) { /* Small devices (landscape phones, 576px and up) */
+    .card {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { /* Medium devices (tablets, 768px and up) */
+    .card {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) { /* Large devices (desktops, 992px and up) */
+    .card {
+        width: 100%;
+    }
+}
+
+@media (min-width: 1200px) { /* Extra large devices (large desktops, 1200px and up) */
+    .card {
+        width: 100%; /* Use Bootstrap's grid for proper responsive layout */
+    }
+}
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover .card-img-overlay {
+    opacity: 0.2;
+    background-color: white;
+}
+.card-content .location, .card-content .country {
+    color: #555; /* Dark color for location and country */
+}
+
+.card-content .price {
+    color: #ff5a5f; /* Darkest color for price */
+    font-size: 18px;
+    font-weight: 500; /* Bold */
+}
+//show ejs
+
+
+.container {
+    margin-bottom: 100px; /* Ensure container has enough space below */
+}
+
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Space above the card */
+    margin-bottom: 20px; /* Space below the card */
+}
+
+.card-img-top {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.card-body {
+    padding: 20px; /* Padding inside the card */
+}
+
+.card-title {
+    font-size: 1.5rem; /* Title size */
+    margin-bottom: 1rem; /* Space below title */
+}
+
+.card-text {
+    margin-bottom: 1rem; /* Space below text items */
+    line-height: 1.6; /* Line height for readability */
+}
+
+.btn {
+    padding: 10px 20px; /* Button padding */
+    font-size: 1rem; /* Button font size */
+    border: none;
+    border-radius: 5px; /* Rounded corners for buttons */
+    text-transform: uppercase; /* Uppercase text */
+    font-weight: 600; /* Bold text */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+    .card {
+        width: 100%;
+    }
+}

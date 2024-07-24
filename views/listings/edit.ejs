@@ -1,0 +1,53 @@
+<% layout("/layouts/boilerPlate") -%>
+<body>
+    <div class="container mt-3 mb-2">
+        <h1 class="mb-3">Edit Listing</h1>
+        <form action="/listings/<%=data.id%>?_method=PUT" novalidate class="needs-validation" method="POST">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" id="title" name="title" class="form-control" value="<%=data.title%>" required>
+                    <div class="invalid-feedback">Title Should be valid</div>
+                </div>
+                <div class="col-md-6">
+                    <label for="price" class="form-label">Price:</label>
+                    <input type="number" id="price" name="price" class="form-control" value="<%=data.price%>" required>
+                    <div class="invalid-feedback">Price Should be valid</div>
+
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="description" class="form-label">Description:</label>
+                    <textarea id="description" name="description" class="form-control"><%=data.description%></textarea>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="image" class="form-label">Image URL:</label>
+                    <input type="text" id="image" name="image" class="form-control" value="<%=data.image%>" required >
+                    <div class="invalid-feedback">Image Should be valid</div>
+
+
+            <div class="row mb-3">
+                <div class="col-12 col-md-6">
+                    <label for="location" class="form-label">Location:</label>
+                    <input type="text" id="location" name="location" class="form-control" value="<%=data.location%>" required>
+                    <div class="invalid-feedback">Location Should be valid</div>
+
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="country" class="form-label">Country:</label>
+                    <input type="text" id="country" name="country" class="form-control" value="<%=data.country%>" required>
+                    <div class="invalid-feedback">Country Should be valid</div>
+                    
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+    </div>
+    
+</body>
