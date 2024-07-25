@@ -4,7 +4,7 @@ const wrapAsync=require("../utils/WrapAsync");
 const listing = require('../models/listings');
 
 
-// INDEX route
+// Index route
 router.get('/', async (req, res) => {
     let data = await listing.find({});
     res.render('listings/index.ejs', { data });
