@@ -6,10 +6,13 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const ExpressError = require("./utils/ExpressError");
-const listings = require("./routes/listings");
-const reviews = require("./routes/review");
+const listingRouter = require("./routes/listings");
+const reviewRouter = require("./routes/review");
+const userRouter=require("./routes/user.js");
 const flash = require('connect-flash');
-
+const User=require("./models/user.js");
+const passport=require("passport");
+const LocalStatergy=require("passport-local");
 const port = 8080;
 const sessinOptions={ secret: 'your_secret_key',
   resave: false, 
@@ -29,6 +32,12 @@ app.use(methodOverride('_method'));
 // Session middleware
 app.use(session(sessinOptions));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStatergy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // Connect to MongoDB
 main().then(() => console.log('Database Connected')).catch(err => console.log(err));
 async function main() {
@@ -47,8 +56,10 @@ res.locals.error=req.flash("error");
   next();
 })
 
-app.use("/listings", listings);
-app.use("/listings/:id/reviews", reviews);
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
+
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));
