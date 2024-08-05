@@ -8,10 +8,13 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title"><%= data.title %></h5>
-                <p class="card-text"><%= data.description %></p>
-                <p class="card-text"><strong>Price:</strong> &#x20B9;<%= data.price.toLocaleString('en-IN') %></p>
-                <p class="card-text"><strong>Country:</strong> <%= data.country %></p>
-                <p class="card-text"><strong>Location:</strong> <%= data.location %></p>
+                <p class="mb-2"><small class="text-muted">Owned By: <span class="fw-bold"><%= data.owner.username %></span></small></p>
+                <p class="card-text mb-3"><%= data.description %></p>
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item"><i class="fas fa-tag me-2"></i><strong>Price:</strong> <span class="badge bg-success">&#x20B9;<%= data.price.toLocaleString('en-IN') %></span></li>
+                    <li class="list-group-item"><i class="fas fa-globe me-2"></i><strong>Country:</strong> <%= data.country %></li>
+                    <li class="list-group-item"><i class="fas fa-map-marker-alt me-2"></i><strong>Location:</strong> <%= data.location %></li>
+                </ul>
                 <div class="d-flex justify-content-between mb-4">
                     <form method="get" action="/listings/<%= data.id %>/edit">
                         <button type="submit" class="btn btn-primary">Edit</button>

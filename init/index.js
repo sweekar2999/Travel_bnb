@@ -9,6 +9,7 @@ async function main() {
 }
 const initDB=async ()=>{
     await Listing.deleteMany({});
+    initData.data=initData.data.map((obj)=>({...obj,owner:'66b0e286a274f60c8595a2cf'}));
     await Listing.insertMany(initData.data);
     // await Listing.insertMany(initData);
 
