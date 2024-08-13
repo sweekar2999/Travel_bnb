@@ -1,53 +1,54 @@
 <% layout("/layouts/boilerPlate") -%>
-<body>
-    <div class="container mt-3 mb-2">
-        <h1 class="mb-3">Edit Listing</h1>
-        <form action="/listings/<%=data.id%>?_method=PUT" novalidate class="needs-validation" method="POST">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="title" class="form-label">Title:</label>
-                    <input type="text" id="title" name="title" class="form-control" value="<%=data.title%>" required>
-                    <div class="invalid-feedback">Title Should be valid</div>
-                </div>
-                <div class="col-md-6">
-                    <label for="price" class="form-label">Price:</label>
-                    <input type="number" id="price" name="price" class="form-control" value="<%=data.price%>" required>
-                    <div class="invalid-feedback">Price Should be valid</div>
+<body class="edit-page">
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <h1 class="text-center mb-4">Edit Listing</h1>
+                <form action="/listings/<%=data.id%>?_method=PUT" novalidate class="needs-validation" method="POST">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" id="title" name="title" class="form-control" value="<%=data.title%>" required>
+                        <div class="invalid-feedback">Please provide a valid title.</div>
+                    </div>
 
-                </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <div class="input-group">
+                            <span class="input-group-text">&#x20B9;</span>
+                            <input type="number" id="price" name="price" class="form-control" value="<%=data.price%>" required>
+                        </div>
+                        <div class="invalid-feedback">Please provide a valid price.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea id="description" name="description" class="form-control" rows="4" required><%=data.description%></textarea>
+                        <div class="invalid-feedback">Please provide a description.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image URL</label>
+                        <input type="text" id="image" name="image" class="form-control" value="<%=data.image%>" required>
+                        <div class="invalid-feedback">Please provide a valid image URL.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" id="location" name="location" class="form-control" value="<%=data.location%>" required>
+                        <div class="invalid-feedback">Please provide a valid location.</div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" id="country" name="country" class="form-control" value="<%=data.country%>" required>
+                        <div class="invalid-feedback">Please provide a valid country.</div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-lg">Update Listing</button>
+                    </div>
+                </form>
             </div>
-
-            <div class="row mb-3">
-                <div class="col-12">
-                    <label for="description" class="form-label">Description:</label>
-                    <textarea id="description" name="description" class="form-control"><%=data.description%></textarea>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-12">
-                    <label for="image" class="form-label">Image URL:</label>
-                    <input type="text" id="image" name="image" class="form-control" value="<%=data.image%>" required >
-                    <div class="invalid-feedback">Image Should be valid</div>
-
-
-            <div class="row mb-3">
-                <div class="col-12 col-md-6">
-                    <label for="location" class="form-label">Location:</label>
-                    <input type="text" id="location" name="location" class="form-control" value="<%=data.location%>" required>
-                    <div class="invalid-feedback">Location Should be valid</div>
-
-                </div>
-                <div class="col-12 col-md-6">
-                    <label for="country" class="form-label">Country:</label>
-                    <input type="text" id="country" name="country" class="form-control" value="<%=data.country%>" required>
-                    <div class="invalid-feedback">Country Should be valid</div>
-                    
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-dark">Submit</button>
-        </form>
+        </div>
     </div>
-    
 </body>

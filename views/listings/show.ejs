@@ -15,6 +15,7 @@
                     <li class="list-group-item"><i class="fas fa-globe me-2"></i><strong>Country:</strong> <%= data.country %></li>
                     <li class="list-group-item"><i class="fas fa-map-marker-alt me-2"></i><strong>Location:</strong> <%= data.location %></li>
                 </ul>
+                <% if(currentUser && currentUser.id===data.owner.id){ %>
                 <div class="d-flex justify-content-between mb-4">
                     <form method="get" action="/listings/<%= data.id %>/edit">
                         <button type="submit" class="btn btn-primary">Edit</button>
@@ -23,6 +24,7 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>
+                <% } %>
                 <hr>
                 <h5 class="card-title">Leave a Review</h5>
                 <form method="post" action="/listings/<%= data.id %>/reviews" novalidate class="needs-validation">
@@ -42,12 +44,32 @@
         </div>
         <hr>
         <h5 class="mb-4 text-center">Reviews</h5>
-        <div class="row justify-content-center">
+        <!-- <div class="row justify-content-center">
             <% if (data.review.length > 0) { %>
                 <% for (let review of data.review) { %>
                     <div class="col-md-5 col-lg-4 mb-3">
                         <div class="card h-100">
                             <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">Rating: <%= review.rating %> / 5</h6>
+                                <p class="card-text"><%= review.comment %></p>
+                                <form method="post" action="/listings/<%= data.id %>/reviews/<%= review.id %>?_method=DELETE">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% } else { %>
+                <p class="text-muted">No reviews yet. Be the first to leave a review!</p>
+            <% } %>
+        </div> -->
+        <div class="row justify-content-center">
+            <% if (data.review && data.review.length > 0) { %>
+                <% for (let review of data.review) { %>
+                    <div class="col-md-5 col-lg-4 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= review.author.username %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Rating: <%= review.rating %> / 5</h6>
                                 <p class="card-text"><%= review.comment %></p>
                                 <form method="post" action="/listings/<%= data.id %>/reviews/<%= review.id %>?_method=DELETE">
