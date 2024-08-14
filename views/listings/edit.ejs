@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
                 <h1 class="text-center mb-4">Edit Listing</h1>
-                <form action="/listings/<%=data.id%>?_method=PUT" novalidate class="needs-validation" method="POST">
+                <form action="/listings/<%=data.id%>?_method=PUT" novalidate class="needs-validation" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" id="title" name="title" class="form-control" value="<%=data.title%>" required>
@@ -27,8 +27,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="image" class="form-label">Image URL</label>
-                        <input type="text" id="image" name="image" class="form-control" value="<%=data.image%>" required>
+                        <label for="image" class="form-label">Upload Image</label>
+                        <input type="file" id="image" name="image" class="form-control" value="<%=data.image%>" >
                         <div class="invalid-feedback">Please provide a valid image URL.</div>
                     </div>
 

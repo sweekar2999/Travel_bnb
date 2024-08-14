@@ -11,9 +11,8 @@ const listingSchema = new Schema({
     type: String
   },
   image: {
-      type: String,
-      default: "https://unsplash.com/photos/a-beach-with-waves-coming-in-to-shore-and-palm-trees-in-the-background-PF23iOhQeZE",
-      set:(v)=>v===""?"https://unsplash.com/photos/a-beach-with-waves-coming-in-to-shore-and-palm-trees-in-the-background-PF23iOhQeZE":v
+    url:String,
+    filename:String
   },
   price: {
     type: Number,
