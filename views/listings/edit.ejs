@@ -27,9 +27,14 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="image" class="form-label">Upload Image</label>
-                        <input type="file" id="image" name="image" class="form-control" value="<%=data.image%>" >
-                        <div class="invalid-feedback">Please provide a valid image URL.</div>
+                        <label class="form-label">Current Image</label>
+                        <img src="<%= originalUrl %>" alt="Current listing image" class="img-fluid mb-2" style="max-height: 200px;">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Upload New Image</label>
+                        <input type="file" id="image" name="image" class="form-control">
+                        <div class="invalid-feedback">Please provide a valid image file.</div>
                     </div>
 
                     <div class="mb-3">

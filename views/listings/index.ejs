@@ -1,7 +1,58 @@
 <% layout("/layouts/boilerPlate") -%>
-<body class="index-page">
-    <div class="container mt-4">
-        <h1 class="mb-4">All Listings</h1>
+<div class="index-page-wrapper">
+    <div class="filters-and-switch-container">
+        <div id="filters" class="filters-container">
+            <div class="filters-scrollable">
+                <button class="filter-btn active" data-filter="all">
+                    <div class="filter-icon"><i class="fas fa-globe"></i></div>
+                    <span>All</span>
+                </button>
+                <button class="filter-btn" data-filter="trending">
+                    <div class="filter-icon"><i class="fas fa-fire"></i></div>
+                    <span>Trending</span>
+                </button>
+                <button class="filter-btn" data-filter="rooms">
+                    <div class="filter-icon"><i class="fas fa-bed"></i></div>
+                    <span>Rooms</span>
+                </button>
+                <button class="filter-btn" data-filter="iconic-cities">
+                    <div class="filter-icon"><i class="fas fa-city"></i></div>
+                    <span>Iconic Cities</span>
+                </button>
+                <button class="filter-btn" data-filter="mountains">
+                    <div class="filter-icon"><i class="fas fa-mountain"></i></div>
+                    <span>Mountains</span>
+                </button>
+                <button class="filter-btn" data-filter="castles">
+                    <div class="filter-icon"><i class="fas fa-chess-rook"></i></div>
+                    <span>Castles</span>
+                </button>
+                <button class="filter-btn" data-filter="amazing-pools">
+                    <div class="filter-icon"><i class="fas fa-swimming-pool"></i></div>
+                    <span>Amazing Pools</span>
+                </button>
+                <button class="filter-btn" data-filter="camping">
+                    <div class="filter-icon"><i class="fas fa-campground"></i></div>
+                    <span>Camping</span>
+                </button>
+                <button class="filter-btn" data-filter="farms">
+                    <div class="filter-icon"><i class="fas fa-tractor"></i></div>
+                    <span>Farms</span>
+                </button>
+                <button class="filter-btn" data-filter="arctic">
+                    <div class="filter-icon"><i class="fas fa-snowflake"></i></div>
+                    <span>Arctic</span>
+                </button>
+            </div>
+        </div>
+        <div class="price-display-toggle">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="priceDisplayToggle">
+                <label class="form-check-label" for="priceDisplayToggle">Display total after taxes</label>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="row">
             <% for(let item of data){ %>
                 <div class="col-xl-4 col-lg-4 col-md-6 mb-4 index-card-wrapper">
@@ -22,4 +73,5 @@
             <% } %>
         </div>
     </div>
-</body>
+</div>
+

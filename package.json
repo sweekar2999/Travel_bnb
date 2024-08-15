@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^5.0.2",
     "bootstrap": "^5.3.3",
     "cloudinary": "^1.41.0",
     "connect-flash": "^0.1.1",

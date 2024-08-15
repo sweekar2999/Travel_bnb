@@ -1,4 +1,12 @@
 <% layout("/layouts/boilerPlate") -%>
+<script>
+    const mapToken="<%= process.env.MAP_TOKEN %>";
+    const coordinates= <%- JSON.stringify(data.geometry.coordinates)%>;
+    const listing = {
+        title: "<%= data.title %>",
+        location: "<%= data.location %>"
+    };
+</script>
 <body>
     <div class="container mt-5 mb-3">
         <h1 class="mb-4 text-center">Listing Details</h1>
@@ -77,5 +85,12 @@
                 <p class="text-muted">No reviews yet. Be the first to leave a review!</p>
             <% } %>
         </div>
+        <div class="container mt-5">
+            <h4 class="mb-3">Location</h4>
+            <div class="map-container">
+                <div id="map" class="rounded shadow"></div>
+            </div>
+        </div>
     </div>
 </body>
+<script src="/js/map.js"></script>

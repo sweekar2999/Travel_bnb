@@ -1,19 +1,77 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<style>
+ 
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+    padding: 0.5rem 3rem;
+}
+
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: #ff385c !important;
+}
+
+.navbar-nav .nav-link {
+    color: #222 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: color 0.2s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff385c !important;
+}
+
+.dropdown-menu {
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,.12);
+    padding: 0.5rem;
+}
+
+.dropdown-item {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.dropdown-item:hover {
+    background-color: #f7f7f7;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+}
+</style>
+<nav class="navbar navbar-expand-md sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"> <i class="fa-solid fa-compass"></i></a>
+    <a class="navbar-brand" href="/">
+      <i class="fa-solid fa-compass text-danger me-2"></i>
+      <span class="fw-bold">Wanderlust</span>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav me-auto">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/listings">All Listings</a>
-        <a class="nav-link" href="/listings/new">Add New Listing</a>
-      </div>
-      <!-- Add auth links -->
-      <div class="navbar-nav">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings">Explore</a>
         <% if (currentUser) { %>
-          <a class="nav-link" href="/logout">Logout</a>
+          <a class="nav-link" href="/listings/new">Add New Listing</a>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-circle"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </div>
         <% } else { %>
           <a class="nav-link" href="/signup">Sign Up</a>
           <a class="nav-link" href="/login">Login</a>
