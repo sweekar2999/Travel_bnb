@@ -26,6 +26,7 @@
 
 .navbar-nav .nav-link:hover {
     color: #ff385c !important;
+    
 }
 
 .dropdown-menu {
@@ -48,18 +49,38 @@
         padding: 0.5rem 1rem;
     }
 }
+
+.search-input {
+    width: 300px; /* Adjust width as needed */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem; /* Space between search input and other elements */
+}
+
+.search-button {
+    border: none;
+    background-color: #ff385c; /* Button color */
+    color: white;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem; /* Space between input and button */
+    cursor:pointer;
+}
 </style>
 <nav class="navbar navbar-expand-md sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <i class="fa-solid fa-compass text-danger me-2"></i>
-      <span class="fw-bold">Wanderlust</span>
+      <span class="fw-bold">TravelBNB</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
+        <input type="text" class="search-input" placeholder="Search..." aria-label="Search">
+        <button class="search-button">Search</button>
         <a class="nav-link" href="/listings">Explore</a>
         <% if (currentUser) { %>
           <a class="nav-link" href="/listings/new">Add New Listing</a>
@@ -80,3 +101,7 @@
     </div>
   </div>
 </nav>
+<script>
+
+
+</script>

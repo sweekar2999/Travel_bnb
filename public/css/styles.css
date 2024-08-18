@@ -18,7 +18,8 @@ html, body {
 /* Footer Styles */
 footer {
     padding: 20px 0;
-    background-color: #ebebeb;
+    background-color: #ebebeb; /* Changed back to previous color */
+    color: red; /* Set font color to red */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -42,7 +43,7 @@ footer {
 
 .f-info a {
     text-decoration: none;
-    color: #007bff;
+    color: red; /* Set link color to red */
 }
 
 .f-info a:hover {
@@ -51,7 +52,7 @@ footer {
 
 .f-info i {
     font-size: 24px;
-    color: #007bff;
+    color: red; /* Set icon color to red */
 }
 
 /* Common Styles */
@@ -442,90 +443,33 @@ h1 {
 }
 
 .price-display-toggle {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
     display: flex;
     align-items: center;
-    white-space: nowrap;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #f9f9f9;
 }
 
-.btn-toggle {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    padding: 5px 12px 5px 35px;
-    color: #484848;
-    background-color: #fff;
-    border: 1px solid #dadada;
-    border-radius: 32px;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
+.form-check.form-switch {
+    flex: 1;
+    min-width: 150px;
+    max-width: 300px;
 }
 
-.btn-toggle:hover {
-    background-color: #f7f7f7;
+.form-check-input {
+    width: 40px; /* Default size */
+    height: 20px; /* Default size */
+    transform: scale(1);
 }
 
-.btn-toggle .handle {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-
-.btn-toggle.active {
-    background-color: #008489;
-    border-color: #008489;
-    color: #fff;
-}
-
-.btn-toggle.active .handle {
-    left: calc(100% - 27px);
-    background-color: #fff;
-}
-
-@media (max-width: 1200px) {
-    .filter-btn[data-filter="arctic"],
-    .filter-btn[data-filter="farms"] {
-        display: none;
-    }
-}
-
-@media (max-width: 992px) {
-    .filter-btn[data-filter="camping"],
-    .filter-btn[data-filter="amazing-pools"] {
-        display: none;
-    }
-}
-
+/* Responsive styles */
 @media (max-width: 768px) {
-    .filter-btn[data-filter="castles"],
-    .filter-btn[data-filter="iconic-cities"] {
-        display: none;
-    }
-}
-
-@media (max-width: 576px) {
-    .filter-btn[data-filter="mountains"],
-    .filter-btn[data-filter="rooms"] {
-        display: none;
-    }
-
-    .filter-btn {
-        min-width: 50px;
-    }
-
-    .filter-icon {
-        font-size: 16px;
-    }
-
-    .filter-btn span {
-        font-size: 9px;
+    .form-check-input {
+        width: 30px; /* Reduced size for smaller screens */
+        height: 15px; /* Reduced size for smaller screens */
     }
 }
 

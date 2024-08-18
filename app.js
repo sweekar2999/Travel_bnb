@@ -17,6 +17,7 @@ const User=require("./models/user.js");
 const passport=require("passport");
 const LocalStatergy=require("passport-local");
 
+
 const port = 8080;
 const sessinOptions={ secret: 'your_secret_key',
   resave: false, 
@@ -32,6 +33,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+
 
 // Session middleware
 app.use(session(sessinOptions));
@@ -64,7 +66,6 @@ res.locals.currentUser=req.user;
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
-
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));

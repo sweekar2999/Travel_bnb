@@ -43,19 +43,48 @@
                     <div class="filter-icon"><i class="fas fa-snowflake"></i></div>
                     <span>Arctic</span>
                 </button>
+                <button class="filter-btn" data-filter="boats">
+                    <div class="filter-icon"><i class="fas fa-ship"></i></div>
+                    <span>Boats</span>
+                </button>
+                <button class="filter-btn" data-filter="domes">
+                    <div class="filter-icon"><i class="fas fa-umbrella"></i></div>
+                    <span>Domes</span>
+                </button>
+                <!-- New Categories Added -->
+                <button class="filter-btn" data-filter="beachfront">
+                    <div class="filter-icon"><i class="fas fa-sun"></i></div> <!-- Icon for Beachfront -->
+                    <span>Beachfront</span>
+                </button>
+                <button class="filter-btn" data-filter="historic">
+                    <div class="filter-icon"><i class="fas fa-landmark"></i></div>
+                    <span>Historic</span>
+                </button>
+                <button class="filter-btn" data-filter="luxury">
+                    <div class="filter-icon"><i class="fas fa-star"></i></div>
+                    <span>Luxury</span>
+                </button>
+                <button class="filter-btn" data-filter="cabins">
+                    <div class="filter-icon"><i class="fas fa-home"></i></div> <!-- Icon for Cabins -->
+                    <span>Cabins</span>
+                </button>
+                <button class="filter-btn" data-filter="treehouse">
+                    <div class="filter-icon"><i class="fas fa-tree"></i></div>
+                    <span>Treehouse</span>
+                </button>
             </div>
         </div>
-        <div class="price-display-toggle">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="priceDisplayToggle">
-                <label class="form-check-label" for="priceDisplayToggle">Display total after taxes</label>
+        <div class="price-display-toggle" style="border: 2px solid #ccc; border-radius: 10px; padding: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; background-color: #f9f9f9;">
+            <div class="form-check form-switch" style="flex: 1; min-width: 150px; max-width: 300px;">
+                <input class="form-check-input" type="checkbox" role="switch" id="priceDisplayToggle" style="width: 40px; height: 20px; transform: scale(1);">
+                <label class="form-check-label" for="priceDisplayToggle" style="margin-left: 10px; font-weight: 500;">Display total after taxes</label>
             </div>
         </div>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row" id="listing-container">
             <% for(let item of data){ %>
-                <div class="col-xl-4 col-lg-4 col-md-6 mb-4 index-card-wrapper">
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-4 index-card-wrapper" data-category="<%= item.category %>">
                     <a class="listing-anchor" href="/listings/<%= item.id %>">
                         <div class="card index-card">
                             <div class="card-img-container">
@@ -66,6 +95,7 @@
                                 <p class="card-text"><%= item.description.substring(0, 100) %>...</p>
                                 <p class="price">&#x20B9;<%= item.price.toLocaleString('en-IN') %></p>
                                 <p class="location"><%= item.location %>, <%= item.country %></p>
+                                <p class="gst-info" style="color: red; font-weight: bold; display: none;">+GST 18%</p>
                             </div>
                         </div>
                     </a>
@@ -74,4 +104,39 @@
         </div>
     </div>
 </div>
+<script>
+let gstInfo = document.getElementsByClassName("gst-info");
+let priceDisplayToggle = document.getElementById("priceDisplayToggle");
+let filterButtons = document.querySelectorAll('.filter-btn');
+let listingContainer = document.getElementById('listing-container');
 
+priceDisplayToggle.addEventListener("click", function() {
+    for (let item of gstInfo) {
+        item.style.display = item.style.display === "none" ? "block" : "none"; // Toggle GST info
+    }
+});
+
+// Replace the forEach loop with a traditional for loop
+for (let i = 0; i < filterButtons.length; i++) {
+    filterButtons[i].addEventListener('click', function() {
+        // Remove active class from all buttons
+        for (let j = 0; j < filterButtons.length; j++) {
+            filterButtons[j].classList.remove('active');
+        }
+        // Add active class to the clicked button
+        this.classList.add('active');
+
+        let filterValue = this.getAttribute('data-filter');
+
+        // Show all listings if "all" is selected
+        let listings = listingContainer.getElementsByClassName('index-card-wrapper');
+        for (let k = 0; k < listings.length; k++) {
+            if (filterValue === 'all' || listings[k].getAttribute('data-category') === filterValue) {
+                listings[k].style.display = 'block'; // Show listing
+            } else {
+                listings[k].style.display = 'none'; // Hide listing
+            }
+        }
+    });
+}
+</script>
