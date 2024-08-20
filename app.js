@@ -73,9 +73,9 @@ async function main() {
 
 // // Routes
 app.get('/', (req, res) => {
-
-  res.send(`I am root.`);
+  res.render('home'); // Render the home.ejs template
 });
+
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.victory = req.flash("victory");

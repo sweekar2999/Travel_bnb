@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Light background color */
+        }
+
+        .home-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background-color: #ffffff; /* White background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 0.5rem 2rem; /* Adjusted padding */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .home-navbar:hover {
+            background-color: #f1f1f1; /* Light gray on hover */
+        }
+
+        .home-navbar-brand {
+            font-size: 1.5rem;
+            color: #ff385c !important;
+            font-weight: bold; /* Bold brand name */
+        }
+
+        .home-navbar-nav .nav-link {
+            color: #222 !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth transition */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .home-navbar-nav .nav-link:hover {
+            color: #ffffff !important; /* White text on hover */
+            background-color: #ff385c !important; /* Brand color on hover */
+        }
+
+        .container {
+            padding-top: 80px; /* Space for fixed navbar */
+            text-align: center; /* Center content */
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .home-navbar {
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="home-navbar navbar navbar-expand-md sticky-top">
+        <div class="container-fluid">
+            <a class="home-navbar-brand navbar-brand" href="/">
+                <i class="fa-solid fa-home text-danger me-2"></i>
+                <span class="fw-bold">Home</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#homeNavbarNavAltMarkup" aria-controls="homeNavbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="homeNavbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="/listings">Explore</a>
+                    <a class="nav-link" href="/signup">Sign Up</a>
+                    <a class="nav-link" href="/login">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to Wanderlust!</h1>
+        <p>This is your home page.</p>
+    </div>
+</body>
+</html>
