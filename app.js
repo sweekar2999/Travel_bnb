@@ -72,10 +72,10 @@ async function main() {
 }
 
 // // Routes
-// app.get('/', (req, res) => {
+app.get('/', (req, res) => {
 
-//   res.send(`I am root.`);
-// });
+  res.send(`I am root.`);
+});
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.victory = req.flash("victory");
