@@ -8,6 +8,7 @@ const methodOverride = require('method-override');
 const path = require('path');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const ExpressError = require("./utils/ExpressError");
 const listingRouter = require("./routes/listings");
 const reviewRouter = require("./routes/review");
@@ -19,13 +20,34 @@ const LocalStatergy=require("passport-local");
 
 
 const port = 8080;
-const sessinOptions={ secret: 'your_secret_key',
-  resave: false, 
-  saveUninitialized: false, 
-  cookie: { expires:Date.now()+7*24*60*60*1000,
-    maxAge:7*24*60*60*1000,
-    httpOnly:true
-   }}
+
+// Connect to MongoDB
+const dbUrl = process.env.ATLASDB_URL; // Moved this line above the store initialization
+
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+  touchAfter: 24 * 3600
+});
+
+// Moved the error handling for store after its initialization
+store.on("error", () => {
+  console.log("err in Mongo session");
+});
+
+const sessinOptions = {
+  store,
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true
+  }
+}
 // Middleware setup
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
@@ -44,10 +66,9 @@ passport.use(new LocalStatergy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Connect to MongoDB
 main().then(() => console.log('Database Connected')).catch(err => console.log(err));
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
+  await mongoose.connect(dbUrl);
 }
 
 // // Routes
@@ -55,11 +76,11 @@ async function main() {
 
 //   res.send(`I am root.`);
 // });
-app.use((req,res,next)=>{
-  res.locals.success=req.flash("success");
-res.locals.victory=req.flash("victory");
-res.locals.error=req.flash("error");
-res.locals.currentUser=req.user;
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.victory = req.flash("victory");
+  res.locals.error = req.flash("error");
+  res.locals.currentUser = req.user;
   next();
 })
 
